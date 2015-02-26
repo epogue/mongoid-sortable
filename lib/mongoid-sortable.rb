@@ -58,7 +58,7 @@ module Mongoid
     end
 
     def relation
-      (embedded? ? send(self.metadata.inverse).send(self.metadata.name) : self.class).unscoped.scoped
+      (embedded? ? send(self.relation_metadata.inverse).send(self.relation_metadata.name) : self.class).unscoped.scoped
     end
 
     def position_scope(options = {})
