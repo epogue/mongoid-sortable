@@ -3,9 +3,9 @@ require File.expand_path('../lib/mongoid-sortable/version', __FILE__)
 
 Gem::Specification.new do |gem|
   gem.authors       = ["Elliott Pogue"]
-  gem.email         = ["epogue@gmail.com"]
+  gem.email         = ["jpstokes@gmail.com"]
   # gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{A Mongoid 3.0 module for sorting}
+  gem.summary       = %q{A Mongoid 4.0 module for sorting}
   gem.homepage      = "https://github.com/epogue/mongoid-sortable"
 
   gem.files         = `git ls-files`.split($\)
