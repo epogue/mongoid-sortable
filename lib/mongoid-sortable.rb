@@ -43,10 +43,10 @@ module Mongoid
     end
     
     def position_at(new_position)
-      position_scope.gt(position: position).each{|d| d.inc(:position, -1) }
-      set(:position, nil)
-      position_scope.gte(position: new_position).each{|d| d.inc(:position, 1) }
-      set(:position, new_position)
+      position_scope.gt(position: position).each{|d| d.inc(position: -1) }
+      set(position: nil)
+      position_scope.gte(position: new_position).each{|d| d.inc(position: 1) }
+      set(position: new_position)
     end
         
     def set_position
@@ -54,7 +54,7 @@ module Mongoid
     end
     
     def set_sibling_positions
-      position_scope.gt(position: position).each{|d| d.inc(:position, -1) }
+      position_scope.gt(position: position).each{|d| d.inc(position: -1) }
     end
 
     def relation
