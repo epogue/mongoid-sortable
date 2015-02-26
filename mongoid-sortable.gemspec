@@ -15,7 +15,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Mongoid::Sortable::VERSION
 
-  gem.add_dependency 'mongoid', '~> 3.0.0.rc'
+  gem.add_dependency 'mongoid', '~> 4.0.0'
   
   gem.add_development_dependency 'rspec'
   gem.add_development_dependency 'database_cleaner'
