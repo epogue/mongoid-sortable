@@ -1,8 +1,6 @@
 test:
-  sessions:
+  clients:
     default:
       database: mongoid_sortable_test
       hosts:
         - localhost:27017
-      options:
-        consistency: :strong
