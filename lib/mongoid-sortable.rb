@@ -38,7 +38,7 @@ module Mongoid
     def reorder(ids)
       ids.map!(&:to_s) # ensure entities are strings
       ids.each_with_index do |id, index|
-        position_scope.find(id).set(:position, index + 1)
+        position_scope.find(id).set(position: index + 1)
       end
     end
     
@@ -58,7 +58,7 @@ module Mongoid
     end
 
     def relation
-      (embedded? ? send(self.relation_metadata.inverse).send(self.relation_metadata.name) : self.class).unscoped.scoped
+      (embedded? ? send(self._association.inverse).send(self._association.name) : self.class).unscoped.scoped
     end
 
     def position_scope(options = {})
