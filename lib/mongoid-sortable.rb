@@ -38,15 +38,15 @@ module Mongoid
     def reorder(ids)
       ids.map!(&:to_s) # ensure entities are strings
       ids.each_with_index do |id, index|
-        position_scope.find(id).set(:position, index + 1)
+        position_scope.find(id).set(position: index + 1)
       end
     end
     
     def position_at(new_position)
-      position_scope.gt(position: position).each{|d| d.inc(:position, -1) }
-      set(:position, nil)
-      position_scope.gte(position: new_position).each{|d| d.inc(:position, 1) }
-      set(:position, new_position)
+      position_scope.gt(position: position).each{|d| d.inc(position: -1) }
+      set(position: nil)
+      position_scope.gte(position: new_position).each{|d| d.inc(position: 1) }
+      set(position: new_position)
     end
         
     def set_position
@@ -54,11 +54,11 @@ module Mongoid
     end
     
     def set_sibling_positions
-      position_scope.gt(position: position).each{|d| d.inc(:position, -1) }
+      position_scope.gt(position: position).each{|d| d.inc(position: -1) }
     end
 
     def relation
-      (embedded? ? send(self.metadata.inverse).send(self.metadata.name) : self.class).unscoped.scoped
+      (embedded? ? send(self._association.inverse).send(self._association.name) : self.class).unscoped.scoped
     end
 
     def position_scope(options = {})

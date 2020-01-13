@@ -2,10 +2,10 @@ require 'spec_helper'
 
 describe "MongoidSortable" do
 	describe "sortable items" do
-		let(:parent) { FactoryGirl.create(:parent_document) }
-		let!(:document1) { FactoryGirl.create(:document, parent_document: parent) }
-		let!(:document2) { FactoryGirl.create(:document, parent_document: parent) }
-		let!(:document3) { FactoryGirl.create(:document, parent_document: parent) }
+		let(:parent) { FactoryBot.create(:parent_document) }
+		let!(:document1) { FactoryBot.create(:document, parent_document: parent) }
+		let!(:document2) { FactoryBot.create(:document, parent_document: parent) }
+		let!(:document3) { FactoryBot.create(:document, parent_document: parent) }
 
 		it_should_behave_like 'a sortable item'
 
@@ -14,12 +14,12 @@ describe "MongoidSortable" do
 		end
 
 		context "with distinct parents" do
-		  let(:parent1) { FactoryGirl.create(:parent_document) }
-		  let(:parent2) { FactoryGirl.create(:parent_document) }
-		  let!(:p1_doc1) { FactoryGirl.create(:document, parent_document: parent1) }
-		  let!(:p1_doc2) { FactoryGirl.create(:document, parent_document: parent1) }
-			let!(:p2_doc1) { FactoryGirl.create(:document, parent_document: parent2) }
-			let!(:p2_doc2) { FactoryGirl.create(:document, parent_document: parent2) }
+		  let(:parent1) { FactoryBot.create(:parent_document) }
+		  let(:parent2) { FactoryBot.create(:parent_document) }
+		  let!(:p1_doc1) { FactoryBot.create(:document, parent_document: parent1) }
+		  let!(:p1_doc2) { FactoryBot.create(:document, parent_document: parent1) }
+			let!(:p2_doc1) { FactoryBot.create(:document, parent_document: parent2) }
+			let!(:p2_doc2) { FactoryBot.create(:document, parent_document: parent2) }
 
 			it "should have their proper positions" do
 			  p1_doc1.position.should == 1
@@ -46,11 +46,11 @@ describe "MongoidSortable" do
 	end
 
 	describe "sortable embedded documents" do
-		let(:parent) { FactoryGirl.create(:document) }
-		let!(:document1) { FactoryGirl.create(:embedded_document, document: parent) }
-		let!(:document2) { FactoryGirl.create(:embedded_document, document: parent) }
-		let!(:document3) { FactoryGirl.create(:embedded_document, document: parent) }
-
+		let(:parent) { FactoryBot.create(:document) }
+		let!(:document1) { FactoryBot.create(:embedded_document, document: parent) }
+		let!(:document2) { FactoryBot.create(:embedded_document, document: parent) }
+		let!(:document3) { FactoryBot.create(:embedded_document, document: parent) }
+		
 		it_should_behave_like 'a sortable item'
 
 		it "should properly sort" do
